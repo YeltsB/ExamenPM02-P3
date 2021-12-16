@@ -1,6 +1,6 @@
 ﻿using exammovil.Models;
 using exammovil.ViewModels;
-
+using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,32 +19,39 @@ namespace exammovil.Views
         {
             InitializeComponent();
             this.BindingContext = new PagoViewModel();
-            
+            dtfecha.Date = DateTime.Now;
         }
 
         private void Btnver_Clicked(object sender, EventArgs e)
         {
             ((NavigationPage)this.Parent).PushAsync(new ListPagoView());
-   
-
             
         }
 
-        private void btnnuevo_Clicked(object sender, EventArgs e)
+        private async void btnTomarFoto_Clicked(object sender, EventArgs e)
         {
+            await CrossMedia.Current.Initialize();
 
-        }
-
-        private void btnguardar_Clicked(object sender, EventArgs e)
-        {
-            CRUD c = new CRUD();
-            Pagos obj = new Pagos()
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
-                Descripcion = "Prueba",
-                Monto = 5000.00,
-                Fecha = DateTime.Now
-            };
-            c.Insertar(obj);
+                await DisplayAlert("Alerta", "Cámara no disponible", "OK");
+                return;
+            }
+
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                //Directory = "Sample",
+                //Name = "test.jpg"
+                SaveToAlbum = true
+            });
+
+            if (file == null)
+                return;
+
+            //await DisplayAlert("File Location", file.Path, "OK");
+
+            byte[] fileByte = System.IO.File.ReadAllBytes(file.AlbumPath);
+
         }
     }
 }

@@ -8,11 +8,11 @@ namespace exammovil.Models
 {
     public class Pagos
     {
-        private int id_pago;
-        private string descripcion;
-        private double monto;
-        private DateTime fecha;
-        //private Byte[] photo_recibo;
+        public int id_pago;
+        public string descripcion;
+        public double monto;
+        public DateTime fecha;
+       // public Byte[] photo_recibo;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

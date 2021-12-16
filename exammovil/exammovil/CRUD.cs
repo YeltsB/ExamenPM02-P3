@@ -37,13 +37,14 @@ namespace exammovil
                 Console.WriteLine("ok");
             }
         }
-        public void Actualizar(Pagos modelo)
+        public int Actualizar(Pagos modelo)
         {
-            con.Update(modelo);
+           return con.Update(modelo);
         }
-        public void Eliminar(Pagos modelo)
+        public int Eliminar(Pagos modelo)
         {
-            con.Delete(modelo);
+             return con.Delete(modelo);
+
         }
         public Pagos Consultar(int id)
         {

@@ -59,9 +59,6 @@ namespace exammovil.ViewModels
             Eliminar = new Command(() => {
                 Pagos modelo = new Pagos()
                 {
-                    Descripcion = Descripcion,
-                    Monto = Monto,
-                    Fecha = Fecha,
                     Id_pago = Id_pago
                 };
 
