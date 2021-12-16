@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="exammovil.Views.AddPagoView">
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Pagos" Font="25" TextColor="Green" HorizontalOptions="Center"></Label>
+            <Entry x:Name="txtDescripcion" Placeholder="Descripcion" Text="{Binding Descripcion , Mode=TwoWay}"></Entry>
+            <Entry x:Name="txtMonto" Placeholder="Monto" Text="{Binding Monto, Mode=TwoWay}" 
+                   Keyboard="Numeric"></Entry>
+           
+              
+            <DatePicker x:Name="dtfecha" Date="{Binding Fecha, Mode=TwoWay}" ></DatePicker>
+            
+            <Button x:Name="btnguardar" Text="Guardar" BackgroundColor="Purple" Command="{Binding Guardar}" 
+                    Clicked="btnguardar_Clicked"></Button>
+            
+            <Button x:Name="btnnuevo" Text="Nuevo" BackgroundColor="Blue" Command="{Binding Nuevo}"
+                    Clicked="btnnuevo_Clicked"></Button>
+            
+            <Button x:Name="btnver" Text="Ver" BackgroundColor="Red" Clicked="Btnver_Clicked"></Button>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

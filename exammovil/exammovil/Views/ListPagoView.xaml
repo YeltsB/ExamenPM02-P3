@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="exammovil.Views.ListPagoView">
+    <ScrollView>
+        <StackLayout>
+
+            <Label Text="Listado de Personas" HorizontalOptions="Center" TextColor="Green"></Label>
+            <ListView ItemsSource="{Binding ListaPagos1}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label x:Name="lbDescripcion" Text="{Binding Descripcion}"></Label>
+                                <Label x:Name="lbMonto" Text="{Binding Monto}"></Label>
+                                <Label x:Name="lbFecha" Text="{Binding Fecha}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
